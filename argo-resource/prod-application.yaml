@@ -1,0 +1,14 @@
+project: default
+source:
+  repoURL: 'https://github.com/safe2008/gitops-demo.git'
+  path: .
+  targetRevision: HEAD
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: default
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
