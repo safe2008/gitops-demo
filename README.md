@@ -17,6 +17,10 @@
 ❯ kubectl apply -n argocd -f argo-resource/dev-nginx.yaml
 ❯ kubectl apply -n argocd -f argo-resource/dev-guestbook.yaml
 
+## Deploy to external cluster
+❯ kubectl apply -n argocd -f argo-resource/dev-nginx-external-cluster.yaml
+❯ kubectl apply -n argocd -f argo-resource/dev-guestbook-external-cluster.yaml
+
 ```
 
 ![nginx](images/2020-12-02-16-45-47.png)
