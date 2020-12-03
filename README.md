@@ -15,6 +15,7 @@
 ```bash
 ## https://argoproj.github.io/argo-cd/operator-manual/declarative-setup/#app-of-apps
 ❯ kubectl apply -n argocd -f argo-resource/dev-nginx.yaml
+❯ kubectl apply -n argocd -f argo-resource/dev-guestbook.yaml
 
 ```
 
