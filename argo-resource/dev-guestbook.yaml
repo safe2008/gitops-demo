@@ -3,10 +3,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: example-dev
+  name: guestbook
   namespace: argocd
   labels:
-    project: example-dev
+    project: guestbook
 spec:
   clusterResourceWhitelist:
   - group: '*'
@@ -23,18 +23,32 @@ metadata:
   name: guestbook
   namespace: argocd
 spec:
+  project: default
   source:
-    repoURL: https://argoproj.github.io/argo-helm
-    chart: argo
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+    path: helm-guestbook
   destination:
     server: https://kubernetes.default.svc
     namespace: example-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
 # spec:
-#   project: default
+#   project: guestbook
 #   source:
-#     repoURL: https://github.com/argoproj/argocd-example-apps.git
-#     targetRevision: HEAD
-#     path: guestbook
+#     repoURL: https://kubernetes-charts.storage.googleapis.com
+#     chart: nginx-ingress
+#     targetRevision: '1.24.3'
 #   destination:
 #     server: https://kubernetes.default.svc
-#     namespace: guestbook
+#     namespace: example-dev
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
